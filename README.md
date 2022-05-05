@@ -1,4 +1,4 @@
-Here is Jimmy(BEP-20) official github account. Follow our telegram channel for valid and official announcements,
+Here is Jimmy (BEP-20) official github account. Follow our telegram channel for valid and official announcements,
 
 Telegram : https://t.me/jimmyexchange
 
