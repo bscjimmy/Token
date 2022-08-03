@@ -150,11 +150,11 @@ contract JMY is Context, IERC20, Ownable {
     string private constant _name = "Jimmy";
     string private constant _symbol = "JMY";
     uint8 private constant _decimals = 8;
-    uint256 private _tTotal = 1000000000000 * 10**_decimals;
+    uint256 private _tTotal = 100000000 * 10**_decimals;
 
-    uint256 public _maxWalletAmount = 1000000000000* 10**_decimals;
-    uint256 public _maxTxAmount = 1000000000000* 10**_decimals;
-    uint256 public swapTokenAtAmount = 10000000000 * 10**_decimals;
+    uint256 public _maxWalletAmount = 100000000* 10**_decimals;
+    uint256 public _maxTxAmount = 100000000* 10**_decimals;
+    uint256 public swapTokenAtAmount = 1000000 * 10**_decimals;
 
     struct BuyFees{
         uint256 marketing;
@@ -184,11 +184,11 @@ contract JMY is Context, IERC20, Ownable {
     constructor () {
         _tOwned[_msgSender()] = _tTotal;
         
-        buyFee.marketing = 6;
-        buyFee.liquidity = 0;
+        buyFee.marketing = 1;
+        buyFee.liquidity = 1;
         
-        sellFee.marketing = 8;
-        sellFee.liquidity = 0;
+        sellFee.marketing = 1;
+        sellFee.liquidity = 2;
 
         IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
         address _uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
@@ -285,13 +285,13 @@ contract JMY is Context, IERC20, Ownable {
     }
 
     function ChangeBuyTax(uint256 newMarketingFee, uint256 newLiquidityFee) public onlyOwner {
-        require(newMarketingFee <= 10);
+        
         buyFee.marketing = newMarketingFee;
         buyFee.liquidity = newLiquidityFee;
     }
 
     function ChangeSellTax(uint256 newMarketingFee, uint256 newLiquidityFee) public onlyOwner {
-        require(newMarketingFee <= 10);
+        
         sellFee.marketing = newMarketingFee;
         sellFee.liquidity = newLiquidityFee;
     }
